@@ -1,10 +1,12 @@
-$chromeTabs = Get-Process chrome -ErrorAction SilentlyContinue
-$url = 'https://www.dndbeyond.com/characters/130166158'
-if ($chromeTabs) {
-    $tabs = (Get-Process chrome | Select-Object -ExpandProperty MainWindowTitle) -match $url
-    if (-not $tabs) {
-        Start-Process "chrome.exe" $url
+$character = "130166159"
+$url = "https://www.dndbeyond.com/characters/$character"
+$chromeProcess = Get-Process chrome -ErrorAction SilentlyContinue
+if ($chromeProcess) {
+    foreach ($process in $chromeProcess) {
+        if ($process.MainWindowHandle -ne 0) {
+            $process.CloseMainWindow() | Out-Null
+            $process.WaitForExit()
+        }
     }
-} else {
-    Start-Process "chrome.exe" $url
 }
+Start-Process "chrome.exe" -ArgumentList "--start-fullscreen $url"
