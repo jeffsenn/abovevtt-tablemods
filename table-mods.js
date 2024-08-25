@@ -11,8 +11,8 @@ setTimeout(() => {
         }
     };
     mt.bind('g', cyclelog); //for debug on non-Enter kbd
-    mt.bind('Enter', cyclelog);
-    mt.bind('.', () => { //hightight and center current combat token
+    mt.bind('/', cyclelog);
+    mt.bind('*', () => { //hightight and center current combat token
         current = $('#combat_area tr[data-current=1]');
         if (current) {
             target = current.attr('data-target');
@@ -39,31 +39,31 @@ setTimeout(() => {
             window.diceRoller.roll(new DiceRoll(e, 'Table Roll', 'roll'));
         }, 1500);
     };
-    mt.bind('3', function () {
-        collectSome('d20kh1', 0);
-    });
     mt.bind('1', function () {
         collectSome('d20kl1', 0);
     });
     mt.bind('2', function () {
         collectSome('d20', 1);
     });
-    mt.bind('9', function () {
-        collectSome('d10', 1);
+    mt.bind('3', function () {
+        collectSome('d20kh1', 0);
     });
     mt.bind('4', function () {
         collectSome('d4', 1);
     });
-    mt.bind('6', function () {
+    mt.bind('5', function () {
         collectSome('d6', 1);
     });
-    mt.bind('8', function () {
+    mt.bind('6', function () {
         collectSome('d8', 1);
     });
-    mt.bind('5', function () {
+    mt.bind('7', function () {
+        collectSome('d10', 1);
+    });
+    mt.bind('8', function () {
         collectSome('d12', 1);
     });
-    mt.bind('7', function () {
+    mt.bind('9', function () {
         collectSome('d100', 1);
     });
     // make sure controls are hidden at startup
