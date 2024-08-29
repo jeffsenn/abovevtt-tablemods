@@ -2,8 +2,11 @@
 # on our page at full screen -- and checks to make sure network is up
 
 # YOU WILL NEED TO PUT THE CHARACTER NUMBER OF YOUR MAPBOT HERE:
-$character = "130166159"
+$character = "130166158"
 $websiteUrl = "https://www.dndbeyond.com"
+$char_url = $websiteUrl + "/characters/" + $character + "?abovevtt=true"
+
+#make sure that chrome is closed
 $cp = Get-Process chrome -ErrorAction SilentlyContinue 
 if($cp) {
   foreach ($p in $cp) {
@@ -32,4 +35,5 @@ while (-not $siteAvailable -and $attempt -lt $maxAttempts) {
     }
 }
 
-Start-Process "chrome.exe"  -ArgumentList "--start-fullscreen https://www.dndbeyond.com/characters/$character?abovevtt=true"
+$args = "--start-fullscreen "+ $char_url
+Start-Process "chrome.exe"  -ArgumentList $args
