@@ -37,7 +37,7 @@ setTimeout(() => {
                 .join('+');
             delete mt.collectdice;
             window.diceRoller.roll(new DiceRoll(e, 'Table Roll', 'roll'));
-        }, 1000);
+        }, 750);
     };
     mt.bind('1', function () {
         collectSome('d20kl1', 0);
