@@ -4,9 +4,13 @@ setTimeout(() => {
     $("#splash").remove(); //remove splash on new version
     myHidePanel = () => setTimeout(() => $('#hide_rightpanel').click(), 20);
     myHideSheetButton = () => setTimeout(() => $('#sheet_button').hide(), 2000);
+    myHideCombatFooter = () => setTimeout(() => {
+        document.querySelector('#combat_tracker_inside').style.height="850px";
+        $('#combat_footer').hide()}, 2000);    
     //cycle between modes of showing combat&log
     cyclelog = function () {
         setTimeout(() => $('#combat_button').click(), 20);
+        myHideCombatFooter();
         if ($('#combat_tracker_inside').is(':visible')) {
             //make sure gamelog selected
             change_sidbar_tab($('#switch_gamelog'), true);
@@ -39,6 +43,7 @@ setTimeout(() => {
         $('#hide_interface_button').show().addClass('unhidden');
         $('.hideable').hide();
     }
+    myHideCombatFooter();
     myHideSheetButton();
     // wait long enough to make sure everything is settled
     // (15s is by experiment with medium complex situ)
