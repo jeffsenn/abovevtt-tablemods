@@ -18,6 +18,12 @@ setTimeout(() => {
         }
         myHideSheetButton();
     };
+    mt.bind('8', () => {
+        window.diceRoller.roll(new DiceRoll('2d20kl1', 'Table Roll(Dis)', 'roll'));
+    });
+    mt.bind('9', () => {
+        window.diceRoller.roll(new DiceRoll('2d20kh1', 'Table Roll(Adv)', 'roll'));
+    });
     mt.bind('g', cyclelog); //for debug on non-Enter kbd
     mt.bind('/', cyclelog);
     mt.bind('*', () => { //hightight and center current combat token
